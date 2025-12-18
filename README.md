@@ -42,8 +42,26 @@ This repository is organized into three phases, each contained in a specific Jup
 ### Installation
 To replicate these results, install the required dependencies:
 
+## Installation
 ```bash
 pip install pennylane torch matplotlib scikit-learn pennylane-lightning
 ```
-The Theory: Why This WorksThe Interference HypothesisA classical gating network (typically Softmax(Wx + b)) partitions the input space using hyperplanes (straight lines). To separate interlocked data (like spirals or moons), it requires deep layers to approximate the curve.A Quantum Router maps classical data x into a quantum state |phi(x)> via a feature map (e.g., Angle Embedding). This projects the data onto the high-dimensional surface of the Bloch sphere. The router then applies unitary rotations U(theta). The probability of selecting an expert is determined by measurement:$$P(\text{Expert}_i) = |\langle 0 | U(\theta) |\phi(x)\rangle|^2$$Because the amplitudes are complex numbers, they can undergo constructive and destructive interference. This allows the router to create "exclusion zones" and non-linear topology in the original feature space with a very shallow circuit, effectively acting as a powerful learnable kernel.Citation & ContactAuthor: [Your Name]Supervisor: [Supervisor Name]Institution: [Your University/Institution]Based on architectural concepts from Nguyen et al. (2025) but implementing a novel hybrid ablation study for mechanism isolation.
 
+## The Theory: Why This Works
+
+### The Interference Hypothesis
+
+A classical gating network (typically Softmax(Wx + b)) partitions the input space using hyperplanes (straight lines). To separate interlocked data (like spirals or moons), it requires deep layers to approximate the curve.
+
+A Quantum Router maps classical data x into a quantum state |ψ(x)⟩ via a feature map (e.g., Angle Embedding). This projects the data onto the high-dimensional surface of the Bloch sphere. The router then applies unitary rotations U(theta). The probability of selecting an expert is determined by measurement:
+
+$$P(\\text{expert } i) = |\\langle i | U(\\theta) |\\psi(x)\\rangle|^2$$
+
+Because the amplitudes are complex numbers, they can undergo constructive and destructive interference. This allows the router to create "exclusion zones" and non-linear topology in the original feature space with a very shallow circuit, effectively acting as a powerful learnable kernel.
+
+**Citation & Contact:**
+- **Author:** Reda HEDDAD
+- **Supervisor:** Dr.Lamiae Bouanane
+- **Institution:** Al Akhawayn University
+
+Based on structural concepts from Nguyen et al. (2025) but implementing a novel hybrid ablation study for mechanism isolation.
